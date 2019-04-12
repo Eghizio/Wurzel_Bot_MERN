@@ -18,4 +18,4 @@ const style = {
     gridColumnEnd: "4",
 };
 
-export default Footer
+export default Footer;

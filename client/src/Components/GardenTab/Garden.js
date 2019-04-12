@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Field from './Field';
 
+//can become functional component
 export class Garden extends Component {
 
     render() {
@@ -8,7 +9,7 @@ export class Garden extends Component {
         const rows = [];
 
         for(let r=1; r<=204; r++)
-            rows.push(<Field key={r}/>);
+            rows.push(<Field key={r} fieldID={r} />);
 
     return (
         <div style={gridContainer}>
@@ -27,7 +28,7 @@ const gridContainer = {
     gridTemplateRows: "repeat(12, minmax(20px, 40px))",
     
     gridGap: "5px",
-    justifyContent: "center"
+    justifyContent: "center" //space-around?
 };
 
 export default Garden;

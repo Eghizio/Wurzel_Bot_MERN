@@ -19,4 +19,4 @@ const style = {
     gridColumnEnd: "4",
 };
 
-export default Header
+export default Header;

@@ -24,10 +24,6 @@ class App extends Component {
   }
 }
 
-const style = {
-  
-};
-
 const gridContainer = {
   display: "grid",
   gridTemplateColumns: "1fr 3fr 1fr",
