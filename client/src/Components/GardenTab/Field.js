@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Consumer } from "../ContextAPI/Provider";
 
 export class Field extends Component {
   constructor(props){
@@ -37,16 +38,20 @@ export class Field extends Component {
       const { fieldID: id } = this.state;
 
     return (
-      <div style={style} 
-      onClick={() => this.selectField(id) } 
-      onMouseOver={() => this.hover(id) } >
-        
-        {/* 
+      <Consumer>
+        {ctx => (
+          <div style={style} 
+          onClick={ () => ctx.handleClick(id) }
+          onMouseOver={() => this.hover(id) } >
+          </div>
+        )}
+      </Consumer>
+        /* 
         grass/plantedImage 
         onHover: Field Data Popup 
         onClick: InfoTab
-        */}
-      </div>
+        */
+      
     )
   }
 }

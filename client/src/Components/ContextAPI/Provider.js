@@ -4,10 +4,15 @@ const storeContext = React.createContext();
 export const Consumer = storeContext.Consumer;
 
 export class Provider extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            selectedField: null,
+            handleClick: this.handleClick
+        };
+    }
 
-    state = {
-        selectedField: null
-    };
+    handleClick = async (id) => await this.setState({ selectedField: id });
 
   render() {
     return (
