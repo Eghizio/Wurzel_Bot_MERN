@@ -8,7 +8,7 @@ class Field extends Component {
 
     return (
       <div style={style}>
-        
+        {/* grass/plantedImage onHover:data */}
       </div>
     )
   }
