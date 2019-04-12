@@ -9,17 +9,15 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <>
-        <div style={gridContainer}>
-          <Header/>
+      <div style={gridContainer}>
+        <Header/>
 
-          <Shelf/>
-          <Garden/>
-          <Info/>
+        <Shelf/>
+        <Garden/>
+        <Info/>
 
-          <Footer/>
-        </div>
-      </>
+        <Footer/>
+      </div>
     );
   }
 }

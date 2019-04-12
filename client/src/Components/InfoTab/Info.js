@@ -1,23 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Consumer } from "../ContextAPI/Provider";
 
-export class Info extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      selectedField: null //what about multiple selection?
-    };
-  }
-
-  render() {
-    const {selectedField: id} = this.state;
-
+const Info = () => {
     return (
-      <div style={style}>
-        <h2> {id ? `Field ${id}` : "Garden"} </h2>
-      </div>
+        <Consumer>
+            {ctx => (
+                <div style={style}> 
+                  <h2>
+                    {ctx.selectedField ? `Field ${ctx.selectedField}` : "Garden"}
+                  </h2>
+                </div>
+            )}
+        </Consumer>
     )
-  }
 }
+
 
 const style = {
     border: "5px solid red",
@@ -25,3 +22,4 @@ const style = {
 };
 
 export default Info;
+
