@@ -1,22 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
+import ConsumerFactory from "../ContextAPI/ConsumerFactory";
 import Field from './Field';
 
-//can become functional component
-export class Garden extends Component {
+const Garden = ({context}) => {
 
-    render() {
-        //17x12
-        const rows = [];
-
-        for(let r=1; r<=204; r++)
-            rows.push(<Field key={r} fieldID={r} />);
+    const rows = []; //17x12
+    for(let r=1; r<=204; r++) //fields indexed from 1
+        rows.push(<Field key={r} contextAPI={context} fieldID={r} />);
 
     return (
         <div style={gridContainer}>
             {rows}
         </div>
     )
-  }
 }
 
 const gridContainer = {
@@ -31,4 +27,4 @@ const gridContainer = {
     justifyContent: "center" //space-around?
 };
 
-export default Garden;
+export default ConsumerFactory(Garden);
