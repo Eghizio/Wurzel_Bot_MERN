@@ -30,7 +30,7 @@ export class Field extends Component {
     console.log(`${id} Hovered`);
     //display popup somewhere around(above or under the field) 
     //or simply info instead of click?
-    //will be possible to turn off the hover option 
+    //will be possible to turn off the hover option //might be irritating after a while
     //or display(fade in) after few seconds of hovering (maybe 3-5 sec?)
   }
   
@@ -40,19 +40,18 @@ export class Field extends Component {
     return (
       <Consumer>
         {ctx => (
-          <div style={style} 
-          onClick={ () => ctx.handleClick(id) }
-          onMouseOver={() => this.hover(id) } >
-          </div>
+      <div  style={style} 
+            onClick={ () => ctx.handleClick(id) }
+            onMouseOver={() => this.hover(id) } >
+      </div>
         )}
       </Consumer>
+    );
         /* 
         grass/plantedImage 
         onHover: Field Data Popup 
         onClick: InfoTab
         */
-      
-    )
   }
 }
 

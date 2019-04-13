@@ -1,25 +1,20 @@
 import React from 'react'
-import { Consumer } from "../ContextAPI/Provider";
+import ConsumerFactory from "../ContextAPI/ConsumerFactory";
 
-const Info = () => {
+const Info = ({context}) => {
     return (
-        <Consumer>
-            {ctx => (
-                <div style={style}> 
-                  <h2>
-                    {ctx.selectedField ? `Field ${ctx.selectedField}` : "Garden"}
-                  </h2>
-                </div>
-            )}
-        </Consumer>
+        <div style={style}> 
+            <h2>
+                {context.selectedField ? `Field ${context.selectedField}` : "Garden"}
+            </h2>
+        </div>
     )
-}
-
+};
 
 const style = {
     border: "5px solid red",
     textAlign: "center"
 };
 
-export default Info;
+export default ConsumerFactory(Info);
 
