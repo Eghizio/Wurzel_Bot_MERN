@@ -36,7 +36,6 @@ export class Field extends Component {
   }
   
     render() {
-      //later on we want to pass whole object, garden--field or shelf--plant(jar)
       const ctx = this.props.contextAPI;
       const { fieldID: id } = this.state;
 

@@ -7,7 +7,7 @@ export class Details extends Component {
         //we do not know now if its the field or jar, but we need to tho xd
         return (
         <div style={style}>
-            <p>{ this.props.item ? `Details for ${this.props.item.fieldID || this.props.item.ID}` : null }</p>
+            <p>{ this.props.contextItem ? `Details for ${this.props.contextItem.fieldID || this.props.contextItem.ID}` : null }</p>
         </div>
         )
     }

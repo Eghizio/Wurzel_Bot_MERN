@@ -1,22 +1,22 @@
 import React from 'react'
 import ConsumerFactory from "../ContextAPI/ConsumerFactory";
+import ButtonX from "./Button/ButtonX";
 import Details from "./Details";
 
 const Info = ({context}) => {
 
-    // const { fieldID } = context;
-    // console.log(`Info: ${context}`);
-
     // selectedItem ? render Item info : render Garden overall info
+    const { selectedItem:item } = context;
+
     return (
         <div style={style}> 
             <div>
-                <h2>
-                    {context.selectedItem ? `${context.selectedItem.type} ${context.selectedItem.fieldID || context.selectedItem.ID}` : "Garden"}
+                <h2 style={Label} >
+                    {item ? `${item.type} ${item.fieldID || item.ID}` : "Garden"}
                 </h2>
-                {/* X BUTTON */}
+                <ButtonX contextAPI={context} />
             </div>
-            <Details item={context.selectedItem} />
+            <Details contextItem={context.selectedItem} />
         </div>
     )
 };
@@ -27,8 +27,10 @@ const style = {
 
     display: "inline-grid",
     gridTemplateRows: "1fr 7fr",
+};
 
-
+const Label = {
+    display: "inline-block",
 };
 
 export default ConsumerFactory(Info);

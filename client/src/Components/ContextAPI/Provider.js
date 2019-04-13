@@ -15,14 +15,14 @@ export class Provider extends Component {
         };
     }
 
-    //should just copy the state of the clicked obj(element state) //work in prog
+    //should just copy the state of the clicked obj(element state)
     handleClick = async (itemState) => {
       await this.setState({ selectedItem: itemState });
-      console.log("Context changed:", this.state);
+      console.log("Context changed:", this.state);//debug
     }
 
     componentDidMount(){
-      console.log("Initial Context:", this.state);
+      console.log("Initial Context:", this.state);//debug
     }
 
   render() {

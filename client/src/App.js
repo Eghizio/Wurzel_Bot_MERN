@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Components/HeaderTab/Header';
-import Shelf from './Components/ShelfTab/Shelf';
+import Inventory from './Components/InventoryTab/Inventory';
 import Garden from './Components/GardenTab/Garden';
 import Info from './Components/InfoTab/Info';
 import Footer from './Components/FooterTab/Footer';
@@ -12,7 +12,7 @@ class App extends Component {
       <div style={gridContainer}>
         <Header/>
 
-        <Shelf/>
+        <Inventory/>
         <Garden/>
         <Info/>
 

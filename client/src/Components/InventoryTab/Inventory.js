@@ -3,7 +3,7 @@ import ConsumerFactory from "../ContextAPI/ConsumerFactory";
 import Jar from "./Jar";
 
 //naming convention?? maybe just inventory?(not store coz will mix up with redux store)
-const Shelf = ({context}) => {
+const Inventory = ({context}) => {
 
     const jars = []; //todo: overflow, capacity etc
     for(let i=1; i<=30; i++) //if fields indexed from one then lets index the jars as well
@@ -12,7 +12,7 @@ const Shelf = ({context}) => {
     return (
       <div style={style}>
         <div>
-          <h2>Shelf</h2>
+          <h2>Inventory</h2>
         </div>
 
         <div style={jarsDiv}>
@@ -41,4 +41,4 @@ const jarsDiv = {
     gridGap: "10px",
 };
 
-export default ConsumerFactory(Shelf);
+export default ConsumerFactory(Inventory);
