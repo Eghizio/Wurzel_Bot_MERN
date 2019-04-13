@@ -2,17 +2,12 @@ import React, { Component } from 'react'
 
 export class ButtonX extends Component {
 
-    handler = () => {
-        this.props.contextAPI.selectedItem = null;
-        console.log("Button clicked! new contextAPI:", this.props.contextAPI);
-    }
-
-    //ISSUE: Components do not re-render after context state change
-
     render() {
 
+        const { contextAPI: ctx } = this.props;
+
         return (
-            <button style={style} onClick={this.handler} >X</button>
+            <button style={style} onClick={() => ctx.select(null)} >X</button>
         )
     }
 }

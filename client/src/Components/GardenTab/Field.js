@@ -42,7 +42,7 @@ export class Field extends Component {
     return (
       <div  style={style} 
             onClick={ () => ctx.select(this.state) }
-            onMouseOver={() => this.hover(id) } >
+            onMouseOver={ () => this.hover(id) } >
       </div>
 
     );
