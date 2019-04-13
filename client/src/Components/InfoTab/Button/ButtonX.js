@@ -7,10 +7,9 @@ export class ButtonX extends Component {
         console.log("Button clicked! new contextAPI:", this.props.contextAPI);
     }
 
-    render() {
+    //ISSUE: Components do not re-render after context state change
 
-        const { ctx } = this.props.contextAPI;
-        console.log(ctx);
+    render() {
 
         return (
             <button style={style} onClick={this.handler} >X</button>
