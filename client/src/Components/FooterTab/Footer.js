@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 export class Footer extends Component {
   render() {
     return (
-      <div style={style}>
+      <footer style={style}>
         <h3>Footer &copy; Eghizio</h3>
-      </div>
+      </footer>
     )
   }
 }

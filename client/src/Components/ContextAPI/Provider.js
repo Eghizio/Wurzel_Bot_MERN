@@ -10,7 +10,9 @@ export class Provider extends Component {
             //selectedItem should be an empty obj, then fetched item
             //but {} != null so i guess it doesnt matter if its null
             //it shifts from obj to null
-            selectedItem: null,
+            selectedItem: {
+              type: null
+            },
             select: this.handleClick
         };
     }

@@ -6,7 +6,10 @@ export class Jar extends Component {
 
         this.state = {
             type: "Jar",
-            ID: this.props.dummyID
+            //placeholder values
+            id: this.props.dummyID,
+            name: "Foo Flower",
+            quantity: 1337
         };
     }
 

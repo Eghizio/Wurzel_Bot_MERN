@@ -8,8 +8,8 @@ export class Field extends Component {
     //and then customize with cDidMount setState
     this.state = {
       type: "Field",
-      fieldID: props.fieldID,
-      plantID: null,
+      id: props.fieldID,
+      plant: null,
       watered: false
     };
   }

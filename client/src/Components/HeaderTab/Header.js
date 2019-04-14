@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 export class Header extends Component {
   render() {
     return (
-      <div style={style}>
+      <header style={style}>
         <h1>WurzelBot</h1>
-      </div>
+      </header>
     )
   }
 }

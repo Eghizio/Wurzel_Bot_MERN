@@ -1,15 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class ButtonX extends Component {
+const ButtonX = (props) => {
 
-    render() {
+    const { contextAPI: ctx } = props;
 
-        const { contextAPI: ctx } = this.props;
-
-        return (
-            <button style={style} onClick={() => ctx.select(null)} >X</button>
-        )
-    }
+    return (
+        <button style={style} onClick={() => ctx.select({type: null})} >X</button>
+    )
 }
 
 //pushes InfoLabel a little bit left ;/

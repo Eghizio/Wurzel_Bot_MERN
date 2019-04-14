@@ -9,9 +9,9 @@ const Garden = ({context}) => {
         rows.push(<Field key={r} contextAPI={context} fieldID={r} />);
 
     return (
-        <div style={gridContainer}>
+        <main style={gridContainer}>
             {rows}
-        </div>
+        </main>
     )
 }
 

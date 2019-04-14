@@ -1,23 +1,23 @@
 import React from 'react'
 import ConsumerFactory from "../ContextAPI/ConsumerFactory";
-import ButtonX from "./Button/ButtonX";
-import Details from "./Details";
+import ButtonX from "./Buttons/ButtonX";
+import DetailsLoader from "./Details/DetailsLoader";
 
 const Info = ({context}) => {
 
     // selectedItem ? render Item info : render Garden overall info
-    const { selectedItem:item } = context;
+    const { type, id } = context.selectedItem; 
 
     return (
-        <div style={style}> 
+        <aside style={style}> 
             <div>
                 <h2 style={Label} >
-                    {item ? `${item.type} ${item.fieldID || item.ID}` : "Garden"}
+                    {type ? `${type} ${id}` : "Garden"}
                 </h2>
                 <ButtonX contextAPI={context} />
             </div>
-            <Details contextItem={context.selectedItem} />
-        </div>
+            <DetailsLoader contextItem={context.selectedItem} />
+        </aside>
     )
 };
 
