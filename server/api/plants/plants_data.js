@@ -1,4 +1,5 @@
 //Plants data scraped from the game avail at /plants
+//Should it be here as .js file or in database??? imo here is more efficient
 module.exports = plants_data = 
 	[
 		{"id":1,"name":"Wiśnie","time":691200,"crop":18,"sx":2,"sy":2,"level":14},
