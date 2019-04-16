@@ -22,12 +22,13 @@ app.get("/",(req, res) => {
 app.get("/plants",(req, res) => {
     res.json(plants_data);
 });
+
 //test route, get single plant ex /plants/q?id=6
 //for now hardcoded. returns the first matching parameter(id>name>time>etc) 
 app.get("/plants/q",(req, res) => {
     let querriedPlant = plants_data.filter(plant =>
         plant.id == req.query.id || 
-        plant.name.toLocaleLowerCase() == req.query.name ||
+        plant.name.toLowerCase() == req.query.name.toLowerCase() ||
         plant.time == req.query.time ||
         plant.crop == req.query.crop ||
         plant.sx == req.query.sx ||
