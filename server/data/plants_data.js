@@ -1,6 +1,14 @@
 //Plants data scraped from the game avail at /plants
 //Should it be here as .js file or in database??? imo here is more efficient
-module.exports = plants_data = 
+//images
+//http://pics.wurzelimperium.de/pics/maps/tafel_map.85.jpg
+//http://pics.wurzelimperium.de/pics/maps/etikett_map.85.jpg
+//http://pics.wurzelimperium.de/pics/lager/glas1.gif
+//https://www.zieloneimperium.pl/pics/cursors/hand.png
+
+// const { escapeDiacritics }  = require("../middleware/diacritics");
+
+const plants_data = 
 	[
 		{"id":1,"name":"Wiśnie","time":691200,"crop":18,"sx":2,"sy":2,"level":14},
 		{"id":2,"name":"Sałaty","time":840,"crop":2,"sx":1,"sy":1,"level":1},
@@ -86,4 +94,9 @@ module.exports = plants_data =
 		{"id":285,"name":"9 urodziny","time":43200,"crop":1,"sx":2,"sy":2,"level":1}
 	];
 
+// plants_data.forEach( (plant) => {
+// 	plant.name = escapeDiacritics(plant.name.toLowerCase());
+// });
+
+module.exports = plants_data;
 

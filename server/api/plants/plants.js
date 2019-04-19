@@ -1,23 +1,25 @@
+//Route "/plants"
 const express = require("express");
 const router = express.Router();
-const plants_data = require("./plants_data");
-
-// "/plants"
+const plants_data = require("../../data/plants_data");
+//Middlewares
+const lowerCase = require("../../middleware/lowerCase");
+const { escapeDiacritics, diacritics } = require("../../middleware/diacritics");
 
 router.get("/", (req, res) => {
     res.json(plants_data);
 });
 
 //how to get just objects list not an array :c
-//returns all plants matching parameters 
-router.get("/q", (req, res) => {
+//returns all plants matching parameters //middleware doesnt handle more than 1 atm
+router.get("/q", lowerCase, diacritics, (req, res) => {
     const { query } = req;
     let querriedPlants;
     
     if(Object.keys(query).length !== 0){
         querriedPlants = plants_data.filter(plant =>
             plant.id == query.id || 
-            plant.name.toLowerCase() == query.name || //need to take query.name.toLowerCase()
+            escapeDiacritics(plant.name.toLowerCase()) == query.name ||
             plant.time == query.time ||
             plant.crop == query.crop ||
             plant.sx == query.sx ||
@@ -44,8 +46,6 @@ router.get("/q", (req, res) => {
         res.json(querriedPlants);
         res.app.set("json spaces", 0);
     }
-    // for(const key in req.query) make it universal WIP
-    // console.log(`${key} = ${req.query[key]}`);
 });
 
 module.exports = router;

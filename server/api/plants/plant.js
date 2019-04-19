@@ -1,8 +1,10 @@
+//Route "/plant"
 const express = require("express");
 const router = express.Router();
-const plants_data = require("./plants_data");
-
-// "/plant"
+const plants_data = require("../../data/plants_data");
+//Middlewares
+const lowerCase = require("../../middleware/lowerCase");
+const { escapeDiacritics, diacritics } = require("../../middleware/diacritics");
 
 //Menu
 router.get("/", (req, res) => {
@@ -19,22 +21,29 @@ router.get("/", (req, res) => {
     res.app.set("json spaces", 0);
 });
 
+//Param: id
 router.get("/id/:id", (req, res) => {
-    res.json(plants_data.filter(plant => plant.id == req.params.id)[0]);
+    res.json(plants_data.filter(plant => 
+        plant.id  == req.params.id)[0]);
 });
 
-//QUERY DOESN'T WORK AFTER ROUTING need to fix
-//cause the /:id treats "g" as an index, got to decide which to take or fix(regex for ex)
+//Param: name
+router.get("/name/:name", lowerCase, diacritics, (req, res) => {
+    res.json(plants_data.filter(plant => 
+        escapeDiacritics(plant.name.toLowerCase()) == req.params.name)[0]);
+});
+
+//Query
 //maybe just change to /plant?parameter=value
-//returns first matching parameter(id>name>time>etc) 
-router.get("/q", (req, res) => {
+//returns first matching parameter(id>name>time>etc) //middleware doesnt handle more than 1 atm
+router.get("/q", lowerCase, diacritics, (req, res) => {
     const { query } = req;
     let querriedPlant;
 
     if(Object.keys(query).length !== 0){
         querriedPlant = plants_data.filter(plant =>
             plant.id == query.id || 
-            plant.name.toLowerCase() == query.name ||
+            escapeDiacritics(plant.name.toLowerCase()) == query.name ||
             plant.time == query.time ||
             plant.crop == query.crop ||
             plant.sx == query.sx ||
@@ -61,5 +70,3 @@ router.get("/q", (req, res) => {
 });
 
 module.exports = router;
-
-

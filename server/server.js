@@ -21,14 +21,7 @@ app.set("title", "WurzelAPI");
 //Middleware
 app.use(bodyParser.json());
 
-
-//Query to lower middleware
-// app.use((req, res, next) => {
-//     for(let key in req.query)
-//         req.query[key] = req.query[key].toLowerCase(); 
-//     //crashes at multiple name values ex: plants/q?name=CEBULE&name=marchew
-//     next();
-// });
+//need proxy
 
 //Routes
 app.use("/", index); //home
