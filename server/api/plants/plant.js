@@ -3,8 +3,10 @@ const express = require("express");
 const router = express.Router();
 const plants_data = require("../../data/plants_data");
 //Middlewares
-const lowerCase = require("../../middleware/lowerCase");
-const { escapeDiacritics, diacritics } = require("../../middleware/diacritics");
+const escapeDiacritics = require("../../middleware/diacritics");
+const queryParser = require("../../middleware/queryParser");
+//Filters
+const queryFilter = require("../../filter/queryFilter");
 
 //Menu
 router.get("/", (req, res) => {
@@ -15,10 +17,8 @@ router.get("/", (req, res) => {
             "/q": "/plant/q?id=6&name=marchew"
         }
     };
-    res.type("application/json");
-    res.app.set("json spaces", 2); //is it possible to set it for certain responses?
+    res.type("application/json"); //shouldnt i use it for all(maybe a middleware)
     res.json(menu);
-    res.app.set("json spaces", 0);
 });
 
 //Param: id
@@ -28,32 +28,21 @@ router.get("/id/:id", (req, res) => {
 });
 
 //Param: name
-router.get("/name/:name", lowerCase, diacritics, (req, res) => {
+router.get("/name/:name", queryParser, (req, res) => {
     res.json(plants_data.filter(plant => 
         escapeDiacritics(plant.name.toLowerCase()) == req.params.name)[0]);
 });
 
 //Query
 //maybe just change to /plant?parameter=value
-//returns first matching parameter(id>name>time>etc) //middleware doesnt handle more than 1 atm
-router.get("/q", lowerCase, diacritics, (req, res) => {
-    const { query } = req;
-    let querriedPlant;
+router.get("/q", queryParser, (req, res) => {
+    let querriedPlants;
 
-    if(Object.keys(query).length !== 0){
-        querriedPlant = plants_data.filter(plant =>
-            plant.id == query.id || 
-            escapeDiacritics(plant.name.toLowerCase()) == query.name ||
-            plant.time == query.time ||
-            plant.crop == query.crop ||
-            plant.sx == query.sx ||
-            plant.sy == query.sy ||
-            plant.level == query.level
-        )[0]; //remove [0] to get all matching plants tho it will be an array
-    }
-    else{
-        querriedPlant = { //tbh u can loop over plant and use typeof xD
-            "/plant/q": {
+    if(Object.keys(req.query).length !== 0)
+        querriedPlants = queryFilter(plants_data, req);
+    else //tbh u can loop over plant and use typeof xD
+        querriedPlants = {  
+            "/plants/q": {
                 "id": "number",
                 "name": "string",
                 "time": "number",
@@ -63,10 +52,8 @@ router.get("/q", lowerCase, diacritics, (req, res) => {
                 "level": "number"
             }
         };
-    }
-    res.app.set("json spaces", 2);
-    res.send(querriedPlant); // omg cries in DRY xD
-    res.app.set("json spaces", 0);
+
+    res.json(querriedPlants.length === 1 ? querriedPlants[0]:querriedPlants);
 });
 
 module.exports = router;
