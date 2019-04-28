@@ -1,5 +1,5 @@
 const express = require("express");
-const mongoose = require("mongoose");
+const mongoDB = require("../db/config");
 const bodyParser = require("body-parser");
 //Middlewares
 const jsonFormat = require("./middleware/jsonFormat");
@@ -7,13 +7,11 @@ const jsonFormat = require("./middleware/jsonFormat");
 const index = require("./api/index");
 const plant = require("./api/plants/plant");
 const plants = require("./api/plants/plants");
+const fields = require("./api/request/fields");
+const jars = require("./api/request/jars");
 
 //Database
-mongoose
-    .connect("mongodb://localhost:27017/wurzel", {useNewUrlParser: true})
-    .then( () => console.log("Connected to MongoDB!"))
-    .catch( () => console.log("Can't connect to MongoDB!"));
-const db = mongoose.connections;
+const db = mongoDB;
 
 //Application
 const app = express();
@@ -23,14 +21,17 @@ app.set("mode", "dev"); //dev:production(tbh it only matters if its dev or not x
 
 //Middleware
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(jsonFormat);
 
 //need proxy
 
 //Routes
-app.use("/api", index); //home
+app.use("/api", index); //api entry
 app.use("/api/plant", plant);
 app.use("/api/plants", plants); //all plants
+app.use("/api/fields", fields);
+app.use("/api/jars", jars);
 
 //PORT & init
 const PORT = process.env.PORT || 5000;

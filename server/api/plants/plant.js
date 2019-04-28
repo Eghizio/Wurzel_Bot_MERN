@@ -8,19 +8,6 @@ const queryParser = require("../../middleware/queryParser");
 //Filters
 const queryFilter = require("../../filter/queryFilter");
 
-//Menu
-router.get("/", (req, res) => {
-    const menu = {
-        "/plant": {
-            "path": "example",
-            "/id/:id": "/plant/id/6",
-            "/q": "/plant/q?id=6&name=marchew"
-        }
-    };
-    res.type("application/json"); //shouldnt i use it for all(maybe a middleware)
-    res.json(menu);
-});
-
 //Param: id
 router.get("/id/:id", (req, res) => {
     res.json(plants_data.filter(plant => 
@@ -34,8 +21,7 @@ router.get("/name/:name", queryParser, (req, res) => {
 });
 
 //Query
-//maybe just change to /plant?parameter=value
-router.get("/q", queryParser, (req, res) => {
+router.get("/", queryParser, (req, res) => {
     let querriedPlants;
 
     if(Object.keys(req.query).length !== 0)

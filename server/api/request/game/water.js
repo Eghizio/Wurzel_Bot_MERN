@@ -11,3 +11,5 @@ const water = (field_id) => {
         .then(response => console.log(response))
         .catch(error => console.log(error));
 };    
+
+module.exports = water;

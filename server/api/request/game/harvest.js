@@ -11,3 +11,5 @@ const harvest = (field_id, plant_id) => {
         .then(response => console.log("Success!", response))
         .catch(error => console.log("Error!", error));
 };
+
+module.exports = harvest;
