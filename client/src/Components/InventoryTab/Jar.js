@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from "axios";
 
 export class Jar extends Component {
     constructor(props){
@@ -6,11 +7,16 @@ export class Jar extends Component {
 
         this.state = {
             type: "Jar",
-            //placeholder values
-            id: this.props.dummyID,
-            name: "Foo Flower",
-            quantity: 1337
+            
+            // id: this.props.dummyID,
+            // name: "Foo Flower",
+            // quantity: 1337
         };
+
+        axios.get(`/api/jars/${this.props.dummyID}`)
+            .then(res => res.data)
+            .then(jar => this.setState({...jar}))
+            .catch(err => console.log(err));
     }
 
     render() {

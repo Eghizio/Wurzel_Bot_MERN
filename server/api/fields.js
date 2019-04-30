@@ -2,7 +2,7 @@
 const express = require("express");
 const router = express.Router();
 //MongoDB Models
-const Field = require("../../../db/models/Field");
+const Field = require("../../db/models/Field");
 
 router.get("/", (req, res) => {
     Field.getFields()

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from "axios";
 
 export class Field extends Component {
   constructor(props){
@@ -8,10 +9,11 @@ export class Field extends Component {
     //and then customize with cDidMount setState
     this.state = {
       type: "Field",
-      id: props.fieldID,
-      plant: null,
-      watered: false
     };
+    axios.get(`/api/fields/${this.props.fieldID}`)
+      .then(res => res.data)
+      .then(field => this.setState({...field}))
+      .catch(err => console.log(err));
   }
 
   // componentDidMount(){

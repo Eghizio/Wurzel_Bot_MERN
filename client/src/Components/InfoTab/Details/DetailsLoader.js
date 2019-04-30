@@ -17,9 +17,9 @@ const DetailsLoader = (props) => {
             {(() => {
                 switch(detail) {
                 case 'Field':
-                    return <DetailsField contextItem={ props.contextItem }/>;
+                    return <DetailsField field={ props.contextItem }/>;
                 case 'Jar':
-                    return <DetailsJar contextItem={ props.contextItem }/>;
+                    return <DetailsJar jar={ props.contextItem }/>;
                 case null:
                 default:
                     return <DetailsGarden />;

@@ -2,11 +2,10 @@ import React from 'react'
 import ConsumerFactory from "../ContextAPI/ConsumerFactory";
 import Jar from "./Jar";
 
-//naming convention?? maybe just inventory?(not store coz will mix up with redux store)
 const Inventory = ({context}) => {
 
-    const jars = []; //todo: overflow, capacity etc
-    for(let i=1; i<=30; i++) //if fields indexed from one then lets index the jars as well
+    const jars = [];
+    for(let i=1; i<=1; i++)
       jars.push(<Jar key={i} contextAPI={context} dummyID={i} />);
 
     return (
@@ -39,6 +38,7 @@ const jarsDiv = {
     gridTemplateColumns: "repeat(4, 1fr)",
     gridTemplateRows: "repeat(7, 1fr)",
     gridGap: "10px",
+    overflow: "scroll", //requires specified height ;/
 };
 
 export default ConsumerFactory(Inventory);

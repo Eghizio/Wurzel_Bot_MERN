@@ -5,13 +5,12 @@ import ButtonHarvest from "./Buttons/ButtonHarvest";
 import ButtonWater from "./Buttons/ButtonWater";
 
 const DetailsField = (props) => {
-    const { type, id, plant, watered } = props.contextItem;
+    const { type, id, plant, isWatered } = props.field;
     return (
         <>
-            <p>{type} {id} details</p>
             {/* the <p> tags are just as placeholders, will style and use semantics later */}
-            <p>Plant: {plant|| "none."}</p>
-            <p>Plant is {watered? null:"not"} watered!</p>
+            <p>{plant? (plant.name? plant.name:"Field not planted") : "Field not planted"}</p>
+            <p>Field is {isWatered.state? null:"not"} watered!</p>
             {/* The buttons will be moved to the overall directory where they can be reused */}
             <SelectPlant />
             <ButtonPlant label={"Plant"} plant={"SelectPlant value"} />

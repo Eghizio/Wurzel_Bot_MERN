@@ -7,9 +7,6 @@ export class Provider extends Component {
     constructor(props){
         super(props);
         this.state = {
-            //selectedItem should be an empty obj, then fetched item
-            //but {} != null so i guess it doesnt matter if its null
-            //it shifts from obj to null
             selectedItem: {
               type: null
             },
@@ -20,11 +17,11 @@ export class Provider extends Component {
     //should just copy the state of the clicked obj(element state)
     handleClick = async (itemState) => {
       await this.setState({ selectedItem: itemState });
-      console.log("Context changed:", this.state);//debug
+      console.log("Context changed:", this.state.selectedItem);//debug
     }
 
     componentDidMount(){
-      console.log("Initial Context:", this.state);//debug
+      console.log("Initial Context:", this.state.selectedItem);//debug
     }
 
   render() {

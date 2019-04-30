@@ -5,10 +5,9 @@ const bodyParser = require("body-parser");
 const jsonFormat = require("./middleware/jsonFormat");
 //Routings
 const index = require("./api/index");
-const plant = require("./api/plants/plant");
-const plants = require("./api/plants/plants");
-const fields = require("./api/request/fields");
-const jars = require("./api/request/jars");
+const plants = require("./api/plants");
+const fields = require("./api/fields");
+const jars = require("./api/jars");
 
 //Database
 const db = mongoDB;
@@ -28,8 +27,7 @@ app.use(jsonFormat);
 
 //Routes
 app.use("/api", index); //api entry
-app.use("/api/plant", plant);
-app.use("/api/plants", plants); //all plants
+app.use("/api/plants", plants);
 app.use("/api/fields", fields);
 app.use("/api/jars", jars);
 

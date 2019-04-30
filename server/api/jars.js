@@ -1,8 +1,8 @@
-//Route "/fields"
+//Route "/jars"
 const express = require("express");
 const router = express.Router();
 //MongoDB Models
-const Jar = require("../../../db/models/Jar");
+const Jar = require("../../db/models/Jar");
 
 router.get("/", (req, res) => {
     Jar.getJars()

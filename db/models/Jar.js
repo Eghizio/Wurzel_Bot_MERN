@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 const Jar_Schema = new Schema({
     id: Number,
-    plant: Number, //plant obj with id name etc plus amount
+    plant: {
+        id: Number,
+        name: String
+    },
     amount: Number
 });
 
