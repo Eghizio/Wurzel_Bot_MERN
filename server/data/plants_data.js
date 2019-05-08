@@ -3,8 +3,12 @@
 //images
 //http://pics.wurzelimperium.de/pics/maps/tafel_map.85.jpg
 //http://pics.wurzelimperium.de/pics/maps/etikett_map.85.jpg
+//http://pics.wurzelimperium.de/pics/maps/s_map.2.85.jpg
 //http://pics.wurzelimperium.de/pics/lager/glas1.gif
 //https://www.zieloneimperium.pl/pics/cursors/hand.png
+//http://pics.wurzelimperium.de/pics/cursors/link.png
+//http://pics.wurzelimperium.de/pics/maps/v_map.85.gif
+//http://pics.wurzelimperium.de/pics/0.gif
 
 // const { escapeDiacritics }  = require("../middleware/diacritics");
 

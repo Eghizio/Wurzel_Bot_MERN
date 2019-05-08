@@ -1,7 +1,7 @@
 import React from 'react'
 
 const DetailsJar = (props) => {
-    const { type, id, plant, amount } = props.jar;
+    const { /*type, id, */plant, amount } = props.jar;
     return (
         <>
             {/* the <p> tags are just as placeholders, will style and use semantics later */}
