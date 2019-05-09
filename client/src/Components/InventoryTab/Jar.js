@@ -7,16 +7,11 @@ export class Jar extends Component {
 
         this.state = {
             type: "Jar",
-            
+            ...props.jar
             // id: this.props.dummyID,
             // name: "Foo Flower",
             // quantity: 1337
         };
-
-        axios.get(`/api/jars/${this.props.dummyID}`)
-            .then(res => res.data)
-            .then(jar => this.setState({...jar}))
-            .catch(err => console.log(err));
     }
 
     render() {

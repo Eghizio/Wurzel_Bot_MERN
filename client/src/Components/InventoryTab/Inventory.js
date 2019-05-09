@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ConsumerFactory from "../ContextAPI/ConsumerFactory";
 import Jar from "./Jar";
+import axios from "axios";
 
 const Inventory = ({context}) => {
+    const [jars, setJars] = useState([]);
 
-    const jars = [];
-    for(let i=1; i<=1; i++)
-      jars.push(<Jar key={i} contextAPI={context} dummyID={i} />);
+    useEffect(() => {
+        axios.get("/api/jars")
+            .then(res => res.data)
+            .then(jars => jars.sort((a,b) => a.id - b.id))
+            .then(jars =>
+                setJars(jars.map(jar => <Jar key={jar.id} contextAPI={context} jar={jar} /> )))
+            .catch(err => {
+                console.log(err);
+            });
+    }, []);
 
     return (
       <div style={style}>
