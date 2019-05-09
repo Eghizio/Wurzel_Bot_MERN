@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SelectPlant from "./SelectPlant";
 import ButtonPlant from "./Buttons/ButtonPlant";
 import ButtonHarvest from "./Buttons/ButtonHarvest";
 import ButtonWater from "./Buttons/ButtonWater";
 
 const DetailsField = (props) => {
-    const { /*type, id, */plant, isWatered } = props.field;
+    const { /*type, */id, plant, isWatered } = props.field;
+    const [selectedPlant, setPlant] = useState({ value: 6, name: "Marchew" });
 
-    const selectPlant = (event) => selectedPlant = event.target.value;
-    let selectedPlant = selectPlant || "6";
+    const selectPlant = (event) => {
+        let selected_plant = {
+            value: Number(event.target.value),
+            name: event.target.options[event.target.selectedIndex].text
+        };
+        setPlant(selected_plant);
+        return selected_plant;
+    };
+    
 
     return (
         <>
@@ -19,7 +27,7 @@ const DetailsField = (props) => {
             <SelectPlant selectPlant={selectPlant} />
             <ButtonPlant label={"Plant"} plant={selectedPlant} />
             <ButtonHarvest label={"Harvest"}/>
-            <ButtonWater label={"Water"}/>
+            <ButtonWater label={"Water"} field={id} />
         </>
     )
 }

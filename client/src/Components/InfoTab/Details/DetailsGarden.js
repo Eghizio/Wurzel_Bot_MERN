@@ -5,7 +5,7 @@ import ButtonHarvest from "./Buttons/ButtonHarvest";
 import ButtonWater from "./Buttons/ButtonWater";
 
 const DetailsGarden = (props) => {
-    const [plant, setPlant] = useState({ value: 6, name: "Marchew" });
+    const [selectedPlant, setPlant] = useState({ value: 6, name: "Marchew" });
 
     const selectPlant = (event) => {
         let selected_plant = {
@@ -22,7 +22,7 @@ const DetailsGarden = (props) => {
             {/* the <p> tags are just as placeholders, will style and use semantics later */}
             <p> Fields available: Bar / 204</p>
             <SelectPlant selectPlant={selectPlant} />
-            <ButtonPlant label={"Plant Everything"} plant={plant}/>
+            <ButtonPlant label={"Plant Everything"} plant={selectedPlant}/>
             <ButtonHarvest label={"Harvest Everything"} />
             <ButtonWater label={"Water Everything"} />
 

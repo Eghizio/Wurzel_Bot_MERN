@@ -18,8 +18,8 @@ router.get("/:id", (req, res) => {
 
 router.patch("/", (req, res) => {
     Field.setField({ id: req.body.id }, {
-        plant: req.body.plant, //conditional obj, or do we just pass everything?
-        isWatered: req.body.isWatered
+        ...(req.body.plant && {plant: req.body.plant}),
+        ...(req.body.isWatered && {isWatered: req.body.isWatered})
     })
         .then(updatedField => res.json(updatedField))
         .catch(err => console.log(err));

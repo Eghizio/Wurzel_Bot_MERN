@@ -28,7 +28,9 @@ router.post("/", (req, res) => {
 
 router.patch("/", (req, res) => {
     Jar.setJar({id: req.body.id}, {
-        amount: req.body.amount //we will be only updating amount
+        ...(req.body.id && {id: req.body.id}),
+        ...(req.body.plant && {plant: req.body.id}),
+        ...(req.body.amount && {amount: req.body.amount}) //we will be only updating amount
     })
         .then(updatedJar => res.json(updatedJar))
         .catch(err => console.log(err));

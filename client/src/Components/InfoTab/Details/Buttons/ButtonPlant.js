@@ -12,12 +12,8 @@ const ButtonPlant = (props) => {
                 id: plant.value,
                 name: plant.name,
                 time_planted: Date.now()
-            },
-            isWatered: {
-                state: false,
-                time_watered: null
             }
-        }).then(res => console.log(res.body))
+        }).then(res => console.log(res))
         .catch(err => console.log(err));
         // console.log(plant)
     };
