@@ -14,7 +14,7 @@ const ButtonWater = (props) => {
                 state: true,
                 time_watered: Date.now()
             }
-        }).then(res => console.log(res.body))
+        }).then(res => console.log("Watered!", res))
         .catch(err => console.log(err));
         // console.log(plant)
     };

@@ -23,8 +23,8 @@ const DetailsGarden = (props) => {
             <p> Fields available: Bar / 204</p>
             <SelectPlant selectPlant={selectPlant} />
             <ButtonPlant label={"Plant Everything"} plant={selectedPlant}/>
-            <ButtonHarvest label={"Harvest Everything"} />
             <ButtonWater label={"Water Everything"} />
+            <ButtonHarvest label={"Harvest Everything"} />
 
         </>
 

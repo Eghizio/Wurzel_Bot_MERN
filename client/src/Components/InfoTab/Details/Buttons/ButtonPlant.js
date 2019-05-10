@@ -7,13 +7,13 @@ const ButtonPlant = (props) => {
     //Plant specific field / all fields
     const plantField = (plant) => { //conditional type req or seperate components?
         axios.patch("/api/fields", {
-            id: 1,
+            id: props.field,
             plant: {
                 id: plant.value,
                 name: plant.name,
                 time_planted: Date.now()
             }
-        }).then(res => console.log(res))
+        }).then(res => console.log("Planted", res))
         .catch(err => console.log(err));
         // console.log(plant)
     };

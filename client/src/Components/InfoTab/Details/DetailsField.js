@@ -25,9 +25,9 @@ const DetailsField = (props) => {
             <p>Field is {isWatered.state? null:"not"} watered!</p>
             {/* The buttons will be moved to the overall directory where they can be reused */}
             <SelectPlant selectPlant={selectPlant} />
-            <ButtonPlant label={"Plant"} plant={selectedPlant} />
-            <ButtonHarvest label={"Harvest"}/>
+            <ButtonPlant label={"Plant"} field={id} plant={selectedPlant} />
             <ButtonWater label={"Water"} field={id} />
+            <ButtonHarvest label={"Harvest"} field={id} plant={plant} />
         </>
     )
 }
