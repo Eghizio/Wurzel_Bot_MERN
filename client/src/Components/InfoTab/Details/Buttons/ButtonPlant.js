@@ -1,26 +1,24 @@
 import React from 'react'
 import axios from "axios";
 
-const ButtonPlant = (props) => {
+const ButtonPlant = ({label, fields, plant}) => {
 
-    //recieve plant from select props.plant
-    //Plant specific field / all fields
-    const plantField = (plant) => { //conditional type req or seperate components?
-        axios.patch("/api/fields", {
-            id: props.field,
-            plant: {
-                id: plant.value,
-                name: plant.name,
-                time_planted: Date.now()
-            }
-        }).then(res => console.log("Planted", res))
-        .catch(err => console.log(err));
-        // console.log(plant)
+    const plantField = () => { //TODO req game plant, handle => update UI and call API to update DB
+        fields.forEach(field =>
+            axios.patch("/api/fields", {
+                id: field,
+                plant: {
+                    id: plant.value,
+                    name: plant.name,
+                    time_planted: Date.now()
+                }
+            }).then(res => console.log("Planted", res))
+            .catch(err => console.log(err))
+        );
     };
 
-    //handler for planting based on props
     return (
-        <button style={style} onClick={() => plantField(props.plant)} >{props.label}</button>
+        <button style={style} onClick={plantField} >{label}</button>
     )
 }
 

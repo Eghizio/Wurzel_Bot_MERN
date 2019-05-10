@@ -17,17 +17,17 @@ const DetailsField = (props) => {
         return selected_plant;
     };
     
+    //handle plant/water/harvest button here for single field or conditionaly in btn comps?
 
     return (
         <>
             {/* the <p> tags are just as placeholders, will style and use semantics later */}
             <p>{plant? (plant.name? plant.name:"Field not planted") : "Field not planted"}</p>
             <p>Field is {isWatered.state? null:"not"} watered!</p>
-            {/* The buttons will be moved to the overall directory where they can be reused */}
             <SelectPlant selectPlant={selectPlant} />
-            <ButtonPlant label={"Plant"} field={id} plant={selectedPlant} />
-            <ButtonWater label={"Water"} field={id} />
-            <ButtonHarvest label={"Harvest"} field={id} plant={plant} />
+            <ButtonPlant label={"Plant"} fields={[id]} plant={selectedPlant} />
+            <ButtonWater label={"Water"} fields={[id]} />
+            <ButtonHarvest label={"Harvest"} fields={[id]} plant={plant} />
         </>
     )
 }
