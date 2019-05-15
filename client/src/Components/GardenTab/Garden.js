@@ -1,16 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ConsumerFactory from "../ContextAPI/ConsumerFactory";
 import Field from './Field';
+import Loader from "../Loader/Loader";
+import axios from "axios";
 
 const Garden = ({context}) => {
+    const [fields, setFields] = useState([]);
 
-    const rows = []; //17x12
-    for(let r=1; r<=204; r++) //fields indexed from 1
-        rows.push(<Field key={r} contextAPI={context} fieldID={r} />);
+    useEffect(() => {
+        axios.get("/api/fields")
+            .then(res => res.data)
+            .then(fields =>
+                setFields(fields.map(field => 
+                    <Field key={field.id} contextAPI={context} field={field} /> )))
+            .catch(err => console.log("ERROR", err));
+    }, []);
 
     return (
         <main style={gridContainer}>
-            {rows}
+            {fields.length === 0? <Loader/> : fields} {/* grid messes the position */}
         </main>
     )
 }

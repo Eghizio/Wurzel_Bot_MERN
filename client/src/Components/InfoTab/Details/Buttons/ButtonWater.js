@@ -7,17 +7,25 @@ const ButtonWater = ({label, fields}) => {
     //IN A FUCKING BUTTON XD
     //might just set onClick in the detail component
 
+    const water_url = (field_id) =>
+    "http://s21.zieloneimperium.pl/save/"+
+    "wasser.php?"+
+    "feld[]="+field_id+"&felder[]="+field_id+
+    "&cid=dd4874652cde2f4b18337fd899ad5598&garden=1";
+
     const waterField = () => { 
-        fields.forEach(field => 
-            axios.patch("/api/fields", {
-                id: field,
-                isWatered: {
-                    state: true,
-                    time_watered: Date.now()
-                }
-            }).then(res => console.log("Watered!", res))
-            .catch(err => console.log(err))
-        );
+        fields.forEach(field => {
+            new Image().src = water_url(field);  //no err handling
+                
+                axios.patch("/api/fields", {
+                    id: field,
+                    isWatered: {
+                        state: true,
+                        time_watered: Date.now()
+                    }
+                }).then(res => console.log("Watered!", res))
+                .catch(err => console.log(err));
+        });
     };
 
     return (

@@ -1,27 +1,16 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 
-export class Jar extends Component {
-    constructor(props){
-        super(props);
+const Jar = (props) => { // eslint-disable-next-line
+    const [state, setState] = useState({type: "Jar", ...props.jar});
 
-        this.state = {
-            type: "Jar",
-            ...props.jar
-            // id: this.props.dummyID,
-            // name: "Foo Flower",
-            // quantity: 1337
-        };
-    }
-
-    render() {
-        const ctx = this.props.contextAPI;
+        const ctx = props.contextAPI;
+        
         return (
-        <div style={style} onClick={() => ctx.select(this.state) }>
+        <div style={style} onClick={() => ctx.select(state) }>
             <div style={plantImg}></div>
         </div>
         )
-    }
-}
+};
 
 const style = {
     border: "1px solid black",

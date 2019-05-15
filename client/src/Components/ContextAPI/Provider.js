@@ -14,7 +14,6 @@ export class Provider extends Component {
         };
     }
 
-    //should just copy the state of the clicked obj(element state)
     handleClick = async (itemState) => {
       await this.setState({ selectedItem: itemState });
       console.log("Context changed:", this.state.selectedItem);//debug

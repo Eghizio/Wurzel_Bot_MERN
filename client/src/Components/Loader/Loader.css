@@ -1,0 +1,19 @@
+@keyframes rotate{
+    from {transform: rotate(0);}
+    to {transform: rotate(360deg);}
+}
+
+.loader{
+    width: 100%; /* 25px; */
+    height: 100%; /* 25px; */
+    margin: auto;
+    /* border: solid gray 5px;
+    border-top: solid black 5px;
+    border-radius: 50%; */
+    background-image: url("flower.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: rotate 1.5s linear infinite;
+    
+}

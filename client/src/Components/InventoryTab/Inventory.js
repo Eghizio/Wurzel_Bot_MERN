@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ConsumerFactory from "../ContextAPI/ConsumerFactory";
 import Jar from "./Jar";
+import Loader from "../Loader/Loader";
 import axios from "axios";
 
 const Inventory = ({context}) => {
@@ -24,7 +25,7 @@ const Inventory = ({context}) => {
         </div>
 
         <div style={jarsDiv}>
-          {jars}
+          {jars.length === 0? <Loader/> : jars} {/* grid messes the position */}
         </div>
       </div>
     )

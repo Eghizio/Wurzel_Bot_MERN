@@ -1,7 +1,7 @@
 import React from "react";
 import { Consumer } from "./Provider";
 
-function ConsumerFactory(ReceivingComponent){
+const ConsumerFactory = (ReceivingComponent) => {
     return (props) => (
         <Consumer>
             { ctx => <ReceivingComponent { ...props } context={ ctx } /> }

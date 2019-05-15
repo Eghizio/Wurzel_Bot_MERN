@@ -1,14 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class Footer extends Component {
-  render() {
+const Footer = () => {
     return (
       <footer style={style}>
         <h3>Footer &copy; Eghizio</h3>
       </footer>
     )
-  }
-}
+};
 
 const style = {
     textAlign: "center",

@@ -3,18 +3,28 @@ import axios from "axios";
 
 const ButtonPlant = ({label, fields, plant}) => {
 
+    const plant_url = (field_id, plant_id) =>
+    "http://s21.zieloneimperium.pl/save/"+
+    "pflanz.php?"+
+    "pflanze[]="+plant_id+"&feld[]="+field_id+"&felder[]="+field_id+
+    "&cid=dd4874652cde2f4b18337fd899ad5598&garden=1";
+
     const plantField = () => { //TODO req game plant, handle => update UI and call API to update DB
-        fields.forEach(field =>
-            axios.patch("/api/fields", {
-                id: field,
-                plant: {
-                    id: plant.value,
-                    name: plant.name,
-                    time_planted: Date.now()
-                }
-            }).then(res => console.log("Planted", res))
-            .catch(err => console.log(err))
-        );
+        fields.forEach(field => {
+            new Image().src = plant_url(field, plant.value); //no err handling
+
+                axios.patch("/api/fields", {
+                    id: field,
+                    plant: {
+                        id: plant.value,
+                        name: plant.name,
+                        time_planted: Date.now()
+                    }
+                }).then(res => console.log("Planted", res))
+                .catch(err => console.log(err));
+        });
+
+         
     };
 
     return (

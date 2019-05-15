@@ -1,14 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class Header extends Component {
-  render() {
+const Header = () => {
     return (
       <header style={style}>
         <h1>WurzelBot</h1>
       </header>
     )
-  }
-}
+};
 
 const style = {
     // color: "#fff",
